@@ -3,7 +3,7 @@ import { View, StyleSheet, SafeAreaView, Platform, StatusBar as RNStatusBar } fr
 import { useTheme } from 'react-native-paper';
 import Footer from '../components/Footer';
 
-const Layout = ({ children, title }) => {
+const Layout = ({ children }) => {
     const { colors } = useTheme();
 
     return (
@@ -17,6 +17,7 @@ const Layout = ({ children, title }) => {
                 />
             )}
             {/* Content */}
+            
             <View style={[styles.content, { backgroundColor: colors.background }]}>
                 {children}
             </View>

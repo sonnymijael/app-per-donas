@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { Provider as PaperProvider } from 'react-native-paper'
 import HomeScreen from './pages/HomeScreen'
-import DetailsScreen from './pages/DetailScreen'
 import { darkTheme, lightTheme } from './lib/theme'
 import { useColorScheme } from 'react-native'
 import SplashScreen from './pages/SplashScreen'
@@ -13,15 +12,13 @@ const Stack = createStackNavigator()
 export default function App() {
   const [loading, setLoading] = useState(true)
   const colorScheme = useColorScheme()
-  console.log(colorScheme)
   const theme = colorScheme === 'dark' ? darkTheme : lightTheme
-  console.log(theme.colors.primary)
 
   useEffect(() => {
-    // Simulate a loading delay
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoading(false)
     }, 3000)
+    return () => clearTimeout(timer)
   })
 
   return (
@@ -41,7 +38,6 @@ export default function App() {
             ) : (
               <React.Fragment>
                 <Stack.Screen name='Home' component={HomeScreen} />
-                <Stack.Screen name='Details' component={DetailsScreen} />
               </React.Fragment>
             )
           }

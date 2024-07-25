@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native'
+import React, { useEffect, useRef } from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, Linking, Animated } from 'react-native'
 import { useTheme } from 'react-native-paper'
 import PawIcon from './PawIcon'
 
@@ -7,25 +7,59 @@ const Footer = () => {
     const { colors } = useTheme()
     const currentYear = new Date().getFullYear()
 
+    const pulseAnim = useRef(new Animated.Value(1)).current
+
+    useEffect(() => {
+        const pulse = Animated.loop(
+            Animated.sequence([
+                Animated.timing(pulseAnim, {
+                    toValue: 1.2,
+                    duration: 500,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(pulseAnim, {
+                    toValue: 1,
+                    duration: 500,
+                    useNativeDriver: true,
+                }),
+            ])
+        )
+        pulse.start()
+
+        return () => pulse.stop()
+    }, [pulseAnim])
+
     const openWebsite = () => {
         Linking.openURL('https://sonnymijael.com')
     }
 
     return (
         <View style={[styles.container, { backgroundColor: colors.background }]}>
-            <TouchableOpacity onPress={openWebsite} style={styles.logoContainer}>
-                <PawIcon size={24} />
-            </TouchableOpacity>
-            <Text style={[styles.text, { color: colors.text }]}>
-                Created by{' '}
-                <Text style={[styles.link, { color: colors.primary }]} onPress={openWebsite}>
-                    @sonnymijael
+            <View style={styles.contentContainer}>
+                <TouchableOpacity onPress={openWebsite}>
+                    <PawIcon size={14} color={colors.primary} />
+                </TouchableOpacity>
+                <Text>
+                    {' '}
                 </Text>
-                {' • '}
                 <Text style={[styles.text, { color: colors.text }]}>
-                    {currentYear}
+                    Created by{' '}
+                    <Animated.Text
+                        style={[
+                            styles.link,
+                            { color: colors.primary },
+                            { transform: [{ scale: pulseAnim }] }
+                        ]}
+                        onPress={openWebsite}
+                    >
+                        @sonnymijael
+                    </Animated.Text>
+                    {' • '}
+                    <Text style={[styles.text, { color: colors.text }]}>
+                        {currentYear}
+                    </Text>
                 </Text>
-            </Text>
+            </View>
         </View>
     )
 }
@@ -38,8 +72,10 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
         borderTopColor: '#ddd',
     },
-    logoContainer: {
-        marginBottom: 8,
+    contentContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     text: {
         fontSize: 14,
@@ -47,6 +83,7 @@ const styles = StyleSheet.create({
     },
     link: {
         textDecorationLine: 'underline',
+        fontSize: 14,
     },
 })
 

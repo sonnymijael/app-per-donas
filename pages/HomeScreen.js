@@ -23,7 +23,7 @@ const HomeScreen = ({ navigation }) => {
                 useNativeDriver: true,
             }),
             Animated.timing(noButtonTranslateX, {
-                toValue: noButtonTranslateX._value - 50,
+                toValue: noButtonTranslateX._value + 20,
                 duration: 300,
                 useNativeDriver: true,
             }),
@@ -73,7 +73,7 @@ const HomeScreen = ({ navigation }) => {
                     </View>
                 ) : (
                     <>
-                        <Text variant='titleLarge'>Me Per🍩?, please</Text>
+                        <Text variant='titleLarge'>Me Per🍩🍩?, please</Text>
                         <View style={styles.container_buttons}>
                             {showButtons && (
                                 <>
@@ -117,6 +117,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     thankYouContainer: {
+        flex: 1,
+        gap: 10,
         justifyContent: 'center',
         alignItems: 'center',
     },

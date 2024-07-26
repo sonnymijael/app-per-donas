@@ -1,16 +1,14 @@
 // SplashScreen
 import React from 'react'
-import { View, Text, StyleSheet, Image, ActivityIndicator } from 'react-native'
 import { useTheme } from 'react-native-paper'
-// images
-const splash_icon = require('../assets/icon.png')
+import { View, Text, StyleSheet, Image, ActivityIndicator } from 'react-native'
 
 const SplashScreen = () => {
     const { colors } = useTheme()
 
     return (
         <View style={[styles.container, { backgroundColor: colors.background }]}>
-            <Text style={[styles.text, { color: colors.text }]}>Welcome to Per🍩</Text>
+            <Text style={[styles.text, { color: colors.text }]}>Abachito 🍩🍩</Text>
             <ActivityIndicator size="large" color={colors.primary} />
         </View>
     )

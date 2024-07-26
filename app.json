@@ -33,6 +33,8 @@
     "platforms": ["ios", "android", "web"],
     "web": {
       "favicon": "./assets/favicon.png",
+      "output": "server",
+      "bundler": "metro",
       "build": {
         "babel": {
           "presets": ["@expo/next-adapter/babel"]

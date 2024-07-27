@@ -29,15 +29,20 @@
       "userInterfaceStyle": "automatic",
       "package": "com.sonnymijael.appperdonas"
     },
-    "sdkVersion": "48.0.0",
-    "platforms": ["ios", "android", "web"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "web": {
       "favicon": "./assets/favicon.png",
       "output": "server",
       "bundler": "metro",
       "build": {
         "babel": {
-          "presets": ["@expo/next-adapter/babel"]
+          "presets": [
+            "@expo/next-adapter/babel"
+          ]
         }
       }
     },
@@ -48,6 +53,9 @@
     },
     "runtimeVersion": {
       "policy": "appVersion"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }

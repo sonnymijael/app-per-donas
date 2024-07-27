@@ -6,9 +6,7 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
-    "build:web": "expo export --output-dir web-build",
-    "build": "npm run build:web"
+    "web": "expo start --web"
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.2.1",
@@ -28,7 +26,8 @@
     "react-native-paper": "^5.12.3",
     "react-native-reanimated": "~3.10.1",
     "react-native-vector-icons": "^10.1.0",
-    "react-native-web": "~0.19.10"
+    "react-native-web": "~0.19.10",
+    "expo-router": "~3.5.18"
   },
   "repository": {
     "type": "git",

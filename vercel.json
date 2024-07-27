@@ -2,21 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "web-build"
-      }
+      "src": "public/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "expo/AppEntry.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "public/index.html"
     }
   ]
 }

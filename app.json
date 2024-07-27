@@ -41,7 +41,7 @@
       "build": {
         "babel": {
           "presets": [
-            "@expo/next-adapter/babel"
+            "module:metro-react-native-babel-preset"
           ]
         }
       }
